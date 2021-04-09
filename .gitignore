@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/
+*.iml
+target
+logs
+temp
+upload-dir
+.vscode/
+.DS_Store
+node_modules
+dist
+documents
+package-lock.json
