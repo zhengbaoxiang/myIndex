@@ -23,7 +23,26 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 ```
 由于没有webpack环境，无法使用vue模板解析，因此各模板组件以.js为后缀，导入注册方法与.vue一致
 需指定模板文件    template:template
+
 ```
 
+
+
+### 本地创建仓库
+```
+…or create a new repository on the command line
+echo "# myIndex" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M master
+git remote add origin https://github.com/zhenggenshuo/myIndex.git
+git push -u origin master
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/zhenggenshuo/myIndex.git
+git branch -M master
+git push -u origin master
+```
 
 
