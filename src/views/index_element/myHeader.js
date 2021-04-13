@@ -28,8 +28,9 @@ export default {
     fnTimeleft () {
       // 实际开发需要通过ajax来读取后台的时间
       var sNow = new Date()
-      // 未来时间：12月31日晚24点
-      var sFuture = new Date(2021, 3, 4, 0, 0, 0)
+      let furtureTime = window.myConfig.initialTime
+      // var sFuture = new Date(2021, 3, 4, 0, 0, 0)
+      var sFuture = new Date(furtureTime).setHours(0, 0, 0)
       // 计算还有多少秒
       var sLeft = parseInt((sFuture - sNow) / 1000)
       // 计算还剩多少天
