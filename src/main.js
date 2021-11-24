@@ -17,9 +17,14 @@ Vue.prototype.eventHub = new Vue({})
 
 // 本地file运行读取有跨域问题，使用node启用服务器
 axios.get('./public/myConfig.json').then((response) => {
-  let str  =response.data
-  let obj = eval(" ( " + str +" ) ")
-  console.log(obj)
+  let data  =response.data
+  let obj 
+  console.log(data,typeof data)
+  if(typeof data === "object"){
+    obj = data
+  }else if(typeof data ==="string"){
+    obj = eval(" ( " + data +" ) ")
+  }
   // 初始配置文件
   window.myConfig =obj
 
@@ -33,8 +38,6 @@ axios.get('./public/myConfig.json').then((response) => {
     // components:{ app  }, //传统注册组件,还需要在index.html中引用<app></app>
     render:c => c(app) , //渲染替换 #app
   }).$mount('#app');
-
-
-
+  
 })
 

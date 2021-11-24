@@ -21,10 +21,10 @@ var virtualDirectories = {
 
 http.createServer(function(request, response) {
 
-  var uri = url.parse(request.url).pathname
-    , filename = path.join(process.cwd(), uri)
-    , root = uri.split("/")[1]
-    , virtualDirectory;
+  let uri = url.parse(request.url).pathname
+  let filename = path.join(process.cwd(), uri)
+  let root = uri.split("/")[1]
+  let virtualDirectory;
   
   filename = filename.replace('%20',' ')
 
@@ -43,7 +43,9 @@ http.createServer(function(request, response) {
       return;
     }
 
-	if (fs.statSync(filename).isDirectory()) filename += '/index.html';
+	  if (fs.statSync(filename).isDirectory()) {
+      filename += '/index.html';
+    }
 
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {        

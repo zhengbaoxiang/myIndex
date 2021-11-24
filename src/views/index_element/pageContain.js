@@ -57,19 +57,6 @@ export default {
     handleChange(par){
       // console.log('change:参数：',a,b)
       this.initialData(`myUrlList_${this.tabId}`)
-
-
-
-
-
-
-
-
-
-
-
-
-      
     },
     initialData (name) {
       //获取布局个数
@@ -83,6 +70,7 @@ export default {
       
       const initialDataListLength = initialDataList.length
       let tempList = []
+      
       // 如果本地没有存储过，则使用初始数据
       if (!myUrlListStr) {
         for (let i = 0; i < this.setLength - initialDataListLength; i++) {

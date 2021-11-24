@@ -1,6 +1,6 @@
 # my_index
 ```
-本项目是纯vue静态页面，未使用webpack
+本项目是纯vue静态页面，未使用webpack,所有资源包统一在index.html中引入
 ```
 
 ## 一、项目启动
