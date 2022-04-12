@@ -1,9 +1,9 @@
 let template=`
 <div class="myIndex" :style="styleObj" >
   <myheader></myheader>
+  <pageContain></pageContain>
   <searchArea></searchArea>
   <toolbar @getBgName="getBgName"></toolbar>
-  <pageContain></pageContain>
   <myfooter></myfooter>
 </div>
 `

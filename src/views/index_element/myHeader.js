@@ -4,7 +4,6 @@ let template=`
     <div class="header_con">
         <div id="haed_time" v-html="timeStr"></div>
     </div>
-    <p class="mesg">要加油呀！</p>
   </header>
 </div>
 `
@@ -16,7 +15,7 @@ export default {
   data () {
     return {
       timeStr: '',
-      initialTime:'2022-01-01'
+      initialTime:''
     }
   },
   created () {

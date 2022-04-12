@@ -1,13 +1,9 @@
 let template=`
-  <footer class="myfooter">
+<footer class="myfooter">
     <div class="footer_link">
-      <a href="#">I</a>
-      <span>|</span>
-      <a href="#">love</a>
-        <span>|</span>
-      <a href="#">you</a>
-        <span>|</span>
-      <a href="#">forever</a>
+        <a href="#">By</a>
+        <span></span>
+        <a href="#">Neo</a>
     </div>
   </footer>
 `

@@ -5,7 +5,7 @@ var http = require("http"),
     port = 521;
 
 var mimeTypes = {
-    "json": "application/json",
+    "json": "text/javascript",
     "htm": "text/html",
     "html": "text/html",
     "jpeg": "image/jpeg",
