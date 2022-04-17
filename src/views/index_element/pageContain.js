@@ -65,7 +65,7 @@ export default {
     },
     mounted() {
         //监听Tom_change事件，同时附带回调函数处理传值
-        eventBus.$on('gridNumChange', this.handleChange)
+        EVENT_BUS.$on('gridNumChange', this.handleChange)
     },
     activated() {},
     methods: {

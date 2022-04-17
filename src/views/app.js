@@ -12,38 +12,47 @@ import toolbar from './index_element/toolbar.js'
 import searchArea from './index_element/searchArea.js'
 import pageContain from './index_element/pageContain.js'
 import myfooter from './index_element/myfooter.js'
+
+import { blobToDataURL } from '../libs/util.js'
+
 export default {
   template:template,
   name: 'myIndex',
   components: { myheader, searchArea, toolbar, pageContain, myfooter },
-  props: {
-    index: {
-      default: 0
-    }
-  },
   data () {
     return {
-      dataList: [],
-      bgurl:"./assets/images/",
-      bgName:'bg2.gif',
-      styleObj:{},
+        bgName: 'bg2.gif',
+        styleObj: {}
     }
   },
   mounted() {
     this.initial()
   },
   methods: {
-    initial(){
-      let bg = window.localStorage.getItem('background')
-      this.bgName = bg? bg: this.bgName
-      this.styleObj = { color:'#3E4255','background-image':`url(${this.bgurl+this.bgName})` }
+    initial() {
+        // const url = require('@/assets/images/' + this.bgName)
+        let url = window.localStorage.getItem('bgUrl') || ''
+        if (url) {
+            // console.log('->', url, '<')
+            //  js动态控制背景地址
+            this.styleObj = {
+                color: '#3E4255',
+                'background-image': `url(${url})`
+            }
+        }
     },
-    getBgName (name) {
-      this.styleObj = { color:'#3E4255','background-image':`url(${this.bgurl + name })` }
-      //更换背景，存到本地
-      window.localStorage.setItem('background', name)
-// 
-    },
+    getBgName(file) {
+        // console.log('-file>', file, '<')
+        blobToDataURL(file, (res) => {
+            // console.log('-url>', res, '<')
+            const base64Url = res
+            this.styleObj = {
+                color: '#3E4255',
+                'background-image': `url(${base64Url})`
+            }
+            window.localStorage.setItem('bgUrl', base64Url)
+        })
+    }
   },
 }
 

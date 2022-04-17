@@ -19,7 +19,7 @@ window.myConfig = config
 // axiosUtils.axiosInit()
 
 //新建实例，挂载到全局，作为事件中心，
-window.eventBus = new Vue()
+window.EVENT_BUS = new Vue()
 //也可以添加到vue原型中，只能通过vm实例中使用this.eventHub调用，js中使用不方便
 // Vue.prototype.eventHub = new Vue({})
 

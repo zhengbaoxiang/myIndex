@@ -14,37 +14,55 @@ export default {
   props: { },
   data () {
     return {
-      timeStr: '',
-      initialTime:''
+        timeStr: '',
+        dateStr: '',
+        timer: null
     }
   },
   created () {
-    
+    let date = window.localStorage.getItem('headDate') || myConfig.initialTime
+    this.initialData(date)
   },
   mounted () { 
-    this.initialTime = window.myConfig.initialTime
-    this.fnTimeleft()
-    setInterval(this.fnTimeleft, 60000)
+    // 监听change事件，同时附带回调函数处理传值
+    EVENT_BUS.$on('headDateChange', this.handleChange)
   },
   activated () {},
   methods: {
-    fnTimeleft () {
-      // 实际开发需要通过ajax来读取后台的时间
-      var sNow = new Date()
-      var sFuture = new Date(this.initialTime).setHours(0, 0, 0)
-      // 计算还有多少秒
-      var sLeft = parseInt((sFuture - sNow) / 1000)
-      // 计算还剩多少天
-      var iDays = parseInt(sLeft / 86400)
-      // 计算还剩多少小时
-      var iHours = parseInt((sLeft % 86400) / 3600)
-      // 计算还剩多少分
-      var iMinutes = parseInt(((sLeft % 86400) % 3600) / 60)
-      // 计算还剩多少秒
-      // var iSeconds = sLeft % 60
-      var sTr = `距离${this.initialTime}还剩:<strong>${iDays}</strong>天${this.fnTodou(iHours)}时` +
-                `${this.fnTodou(iMinutes)}分`
-      this.timeStr = sTr
+    handleChange(value) {
+        window.localStorage.setItem('headDate', value)
+        this.initialData(value)
+    },
+    initialData(value) {
+        console.log('->', value,'<');
+
+        this.dateStr = value
+        this.fnTimeleft(value)
+        clearInterval(this.timer)
+        this.timer = setInterval(this.fnTimeleft, 60000)
+    },
+    fnTimeleft(dateStr) {
+        dateStr = dateStr || this.dateStr
+        // console.log('dateStr:参数：', dateStr)
+        // 实际开发需要通过ajax来读取后台的时间
+        var sNow = new Date()
+        // 未来时间：12月31日晚24点
+        var sFuture = new Date(dateStr).setHours(0, 0, 0)
+        // 计算还有多少秒
+        var sLeft = parseInt((sFuture - sNow) / 1000)
+        // 计算还剩多少天
+        var iDays = parseInt(sLeft / 86400)
+        // 计算还剩多少小时
+        var iHours = parseInt((sLeft % 86400) / 3600)
+        // 计算还剩多少分
+        var iMinutes = parseInt(((sLeft % 86400) % 3600) / 60)
+        // 计算还剩多少秒
+        // var iSeconds = sLeft % 60
+        var sTr =
+            `距离${dateStr}还剩:<strong>${iDays}</strong>天${this.fnTodou(
+                iHours
+            )}时` + `${this.fnTodou(iMinutes)}分`
+        this.timeStr = sTr
     },
     fnTodou (n) {
       if (n < 10) {

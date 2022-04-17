@@ -14,15 +14,15 @@ let template = `
     <div class="overlay" v-if="showSetting">
         <ul class="popup rel">
             <p class="title">请选择倒计时日期：</p>
-            <el-date-picker
-                type="date"
-                size="small"
-                value-format="yyyy-MM-dd"
-                v-model="selectDate"
-                @change="chooseDate"
-                placeholder="选择日期"
-            >
-            </el-date-picker>
+            <div class="originDate">
+                <input
+                    type="date"
+                    name="mdate"
+                    id="sdate"
+                    v-model="selectDate"
+                    @change="originChange(selectDate)"
+                />
+            </div>
             <p class="title">请选择布局方案：</p>
             <li v-for="(item, index) in gridList" :key="index">
                 <input
@@ -79,38 +79,42 @@ export default {
             let temp = window.localStorage.getItem('gridNum')
             this.curValue = temp || this.curValue
         },
-    
+        // 选择倒计时日期
+        chooseDate(value) {
+            // 刷新页面布局
+            EVENT_BUS.$emit('headDateChange', value)
+        },
+        originChange(value){
+            console.log('->', value,'<');
+            EVENT_BUS.$emit('headDateChange', value)
+        },
+
         chooseGridNum(data) {
             // console.log(data.value)
             this.curValue = data.value
             window.localStorage.setItem('gridNum', data.value)
             // 刷新页面布局
-            eventBus.$emit('gridNumChange', data.value)
+            EVENT_BUS.$emit('gridNumChange', data.value)
             // this.showPopup = false
         },
         fileChange(el) {
             if (!el.target.files[0].size) return
-            const files = el.target.files
-            const fileName = files[0].name
-            // el.target.value = ''
+            const file = el.target.files[0]
             // 修改背景 文件名传出去
-            console.log(el, fileName)
-            // this.domPicUrl = require('./' + fileName) //当前路径可以切换
-            // this.domPicUrl = require('@/assets/images/backgrounds/' + fileName)
-            this.$emit('getBgName', fileName)
+            // 处理blob文件
+            this.$emit('getBgName', file)
         },
         cancel() {
             this.showSetting = false
         },
-        reset() {
-            //重置按钮,清掉所有存储数据
-            console.log('reset')
+        resetClick() {
+            this.resetConfirm()
+        },
+        resetConfirm() {
+            this.showSetting = false
+            // 重置按钮,清掉所有存储数据
             window.localStorage.clear()
-            window.location.reload() //刷新页面，不重复提交页面。
-            // window.location.href=window.location.href // 刷新页面，不重复提交页面。
-            // location = location
-            // location.replace(location.href) //刷新页面，不重复提交页面。
-            // window.location.replace(location) //重定向一个页面，也可以为当前页面。
+            window.location.reload() // 刷新页面，不重复提交页面。
         }
     }
 }
