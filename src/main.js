@@ -1,7 +1,7 @@
 //1 导入需要的包 文件包无法导入,只能直接引入
-// import axios from './packages/axios.js'
 // import Vue  from './packages/vue.js'
 // import VueRouter  from './packages/vue-router.js'
+// import axios from './packages/axios.js'
 // Vue.use(VueRouter)
 import config from './config/index.js'
 
@@ -20,8 +20,8 @@ window.myConfig = config
 
 //新建实例，挂载到全局，作为事件中心，
 window.EVENT_BUS = new Vue()
-//也可以添加到vue原型中，只能通过vm实例中使用this.eventHub调用，js中使用不方便
-// Vue.prototype.eventHub = new Vue({})
+//也可以添加到vue原型中，只能通过vm实例中使用this.$eventHub调用，js中使用不方便
+// Vue.prototype.$eventHub = new Vue({})
 
 new Vue({
     data: {},

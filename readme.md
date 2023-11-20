@@ -6,8 +6,7 @@
 ## 一、项目启动
 ### 安装git，拉取代码
 ```
-https://github.com/zhenggenshuo/myWebProj.git
-https://github.com.cnpmjs.org/zhenggenshuo/myWebProj.git
+
 ```
 ### 安装Node.js,安装依赖
 ```
@@ -25,7 +24,6 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
 需指定模板文件    template:template
 
 ```
-
 
 
 ### 本地创建仓库
