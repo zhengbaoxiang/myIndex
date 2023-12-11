@@ -79,28 +79,28 @@ export default {
             title: '北洋园PT'
         },
         {
-            id: 10,
+            id: 11,
             dataId: 12,
             url: 'https://tjupt.org/torrents.php',
             picName: 'bg (12).jpg',
             title: '北洋园PT'
         },
         {
-            id: 10,
+            id: 12,
             dataId: 13,
             url: 'https://tjupt.org/torrents.php',
             picName: 'bg (13).jpg',
             title: '北洋园PT'
         },
         {
-            id: 10,
+            id: 13,
             dataId: 14,
             url: 'https://tjupt.org/torrents.php',
             picName: 'bg (14).jpg',
             title: '北洋园PT'
         },
         {
-            id: 10,
+            id: 14,
             dataId: 15,
             url: 'https://tjupt.org/torrents.php',
             picName: 'bg (15).jpg',

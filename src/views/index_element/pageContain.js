@@ -111,6 +111,8 @@ export default {
             this.showPopup = false
         },
         confirm(data) {
+            console.log(1111,data)
+
             if (!data.title) {
                 console.log('不能为空')
                 return
